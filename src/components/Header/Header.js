@@ -89,19 +89,13 @@ const Header = () => {
                 <Link to="/mypage" className="dropdown-item">
                   <span>마이페이지</span>
                 </Link>
-                <a href="/notifications" className="dropdown-item notification-toggle" onClick={(e) => {
-                  e.preventDefault();
-                  toggleNotifications();
-                }}>
+                <button type="button" className="dropdown-item notification-toggle" onClick={toggleNotifications}>
                   <span>알림 {notificationsEnabled ? '끄기' : '켜기'}</span>
                   {notificationsEnabled ? <IoMdNotifications /> : <IoMdNotificationsOff />}
-                </a>
-                <a href="/logout" className="dropdown-item logout" onClick={(e) => {
-                  e.preventDefault();
-                  handleLogout(e);
-                }}>
+                </button>
+                <button type="button" className="dropdown-item logout" onClick={handleLogout}>
                   <span>로그아웃</span>
-                </a>
+                </button>
               </div>
             </div>
           </>
@@ -116,4 +110,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;
