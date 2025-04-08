@@ -165,12 +165,12 @@
   transform: translateY(0);
 }
 
+/* 드롭다운 메뉴 아이템 (a 태그와 button 모두 적용) */
 .dropdown-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  text-decoration: none;
   color: #373743;
   font-size: 14px;
   width: 100%;
@@ -178,6 +178,13 @@
   background: none;
   cursor: pointer;
   transition: color 0.2s ease;
+  /* 버튼 리셋 */
+  text-decoration: none;
+  font: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .dropdown-item:hover {
@@ -210,7 +217,7 @@
 }
 
 /* 로그인/회원가입 버튼 애니메이션 */
-.header__buttons button {
+.header__buttons > button {
   opacity: 0;
   transform: translateY(-10px);
   animation: fadeInDown 0.3s forwards;
@@ -224,7 +231,7 @@
 }
 
 /* 로그인/회원가입 버튼 */
-.header__buttons button {
+.header__buttons > button {
   background-color: transparent;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -235,16 +242,16 @@
   color: #373743;
 }
 
-.header__buttons button:hover {
+.header__buttons > button:hover {
   background-color: #f1f1f1;
 }
 
-.header__buttons button:last-child {
+.header__buttons > button:last-child {
   background-color: #15CB96;
   color: white;
   border: none;
 }
 
-.header__buttons button:last-child:hover {
+.header__buttons > button:last-child:hover {
   background-color: #13b686;
-} 
+}
