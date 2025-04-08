@@ -56,7 +56,7 @@ const Header = () => {
       <div className="header__left">
         <div className="header__logo">
           <Link to="/">
-            <img src="/4-removebg-preview.png" alt="Learnleaf 로고" />
+            <img src="/logo.png" alt="Learnleaf 로고" />
           </Link>
         </div>
         
@@ -81,7 +81,7 @@ const Header = () => {
             </div>
             <div className="header__user">
               <div className={`header__user-profile ${isDropdownOpen ? 'active' : ''}`} onClick={toggleDropdown}>
-                <img src="/logo512.png" alt="프로필" />
+                <img src="/profile.png" alt="프로필" />
                 <span>홍길동</span>
                 <IoIosArrowDown className={isDropdownOpen ? 'rotate' : ''} />
               </div>
