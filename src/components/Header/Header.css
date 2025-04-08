@@ -1,0 +1,250 @@
+.header {
+  width: 855.6px;
+  height: 118px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background-color: #e1e1e1;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+/* 로고 영역 */
+.header__logo {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  overflow: hidden;
+}
+
+.header__logo img {
+  width: auto;
+  height: 115px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* 메뉴 영역 */
+.header__menu {
+  margin-left: 20px;
+}
+
+.header__menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__menu li {
+  margin-right: 32px;
+}
+
+.header__menu li:last-child {
+  margin-right: 0;
+}
+
+.header__menu a {
+  text-decoration: none;
+  color: #373743;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.header__menu a:hover {
+  color: #15CB96;
+}
+
+/* 버튼 영역 */
+.header__buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 알림 아이콘 */
+.header__notification {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #373743;
+}
+
+.header__notification svg {
+  width: 24px;
+  height: 24px;
+}
+
+.header__notification-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #FF0000;
+  border-radius: 50%;
+}
+
+/* 사용자 프로필 영역 */
+.header__user {
+  position: relative;
+}
+
+.header__user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.header__user-profile:hover {
+  background-color: #f5f5f5;
+}
+
+.header__user-profile img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e1e1e1;
+}
+
+.header__user-profile span {
+  color: #373743;
+  font-size: 14px;
+}
+
+.header__user-profile svg {
+  transition: transform 0.2s ease;
+}
+
+.header__user-profile.active svg.rotate {
+  transform: rotate(180deg);
+}
+
+.header__user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  border: 1px solid #e1e1e1;
+  padding: 8px 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.header__user-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #373743;
+  font-size: 14px;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  color: #15CB96;
+}
+
+.notification-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: inherit;
+}
+
+.notification-toggle svg {
+  margin-left: 8px;
+  font-size: 18px;
+  color: inherit;
+}
+
+.header__user-dropdown .logout {
+  color: #f06b6c;
+  border-top: 1px solid #e1e1e1;
+  margin-top: 8px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.header__user-dropdown .logout:hover {
+  color: #f59899;
+}
+
+/* 로그인/회원가입 버튼 애니메이션 */
+.header__buttons button {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInDown 0.3s forwards;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 로그인/회원가입 버튼 */
+.header__buttons button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  color: #373743;
+}
+
+.header__buttons button:hover {
+  background-color: #f1f1f1;
+}
+
+.header__buttons button:last-child {
+  background-color: #15CB96;
+  color: white;
+  border: none;
+}
+
+.header__buttons button:last-child:hover {
+  background-color: #13b686;
+} 
