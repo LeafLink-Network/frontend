@@ -5,8 +5,8 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import MyPage from './pages/MyPage/MyPage';
 import JobReport from './pages/JobReport/JobReport';
-import ReportSummary from './pages/JobReport/ReportSummary';
-import ReportAnalysis from './pages/JobReport/ReportAnalysis';
+import ReportAnalysis from './pages/ReportAnalysis/ReportAnalysis';
+import MyReport from './pages/MyReport/MyReport';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.css';
@@ -38,7 +38,7 @@ function App() {
             <Route path="/login" element={<Login setIsLoggedIn={handleLoginStatus} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/reports/job" element={<ReportSummary />} />
+            <Route path="/myreport" element={<MyReport />} />
             <Route path="/reports/summary" element={<JobReport />} />
             <Route path="/reports/analysis" element={<ReportAnalysis />} />
           </Routes>

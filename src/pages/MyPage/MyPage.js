@@ -905,7 +905,7 @@ const MyPage = () => {
         <section className="job-reports">
           <h2 className="section-title">직무 기반 리포트</h2>
           <div className="report-links">
-            <Link to="/reports/summary" className="report-link-card" data-discover="true">
+            <Link to="/myreport" className="report-link-card" data-discover="true">
               <h3>내 직무 기반 리포트 요약 바로가기</h3>
               <p>백엔드 개발자 직무의 주요 통계와 요약 정보를 확인해보세요</p>
               <div className="report-link-arrow">→</div>
