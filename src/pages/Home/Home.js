@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
@@ -16,7 +16,7 @@ const Home = () => {
     return `연봉 ${min}~${max}`;
   };
 
-  const featuredJobs = [
+  const [featuredJobs, setFeaturedJobs] = useState([
     {
       id: 1,
       title: 'AI/머신러닝 프론트엔드 개발자',
@@ -56,7 +56,19 @@ const Home = () => {
       isBookmarked: false,
       isSaved: false
     }
-  ];
+  ]);
+
+  const toggleBookmark = (jobId) => {
+    setFeaturedJobs(featuredJobs.map(job => 
+      job.id === jobId ? { ...job, isBookmarked: !job.isBookmarked } : job
+    ));
+  };
+  
+  const toggleSave = (jobId) => {
+    setFeaturedJobs(featuredJobs.map(job => 
+      job.id === jobId ? { ...job, isSaved: !job.isSaved } : job
+    ));
+  };
 
   const recentJobs = [
     {
@@ -199,10 +211,16 @@ const Home = () => {
             <div key={job.id} className="job__card">
               <div className="card__header">
                 <div className="card__actions">
-                  <button className={`bookmark-btn ${job.isBookmarked ? 'active' : ''}`}>
+                  <button 
+                    className={`bookmark-btn ${job.isBookmarked ? 'active' : ''}`}
+                    onClick={() => toggleBookmark(job.id)}
+                  >
                     {job.isBookmarked ? <BsBookmarkFill /> : <BsBookmark />}
                   </button>
-                  <button className={`star-btn ${job.isSaved ? 'active' : ''}`}>
+                  <button 
+                    className={`star-btn ${job.isSaved ? 'active' : ''}`}
+                    onClick={() => toggleSave(job.id)}
+                  >
                     {job.isSaved ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                   <span className="d-day">
