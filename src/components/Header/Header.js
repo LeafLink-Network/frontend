@@ -5,8 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoMdNotificationsOff, IoMdNotifications } from "react-icons/io";
 import './Header.css';
 
-const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const navigate = useNavigate();
