@@ -1,13 +1,21 @@
 .header {
-  width: 855.6px;
-  height: 118px;
+  width: 100%;
+  height: 110px;
   background-color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0;
-  margin: 0 auto;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  width: 855.6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header::after {

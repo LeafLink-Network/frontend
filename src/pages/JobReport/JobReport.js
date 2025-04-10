@@ -131,7 +131,7 @@ const JobReport = () => {
       </div>
       
       <div className="report-summary-link">
-        <Link to="/reports/job" className="summary-button">
+        <Link to="/reports/analysis" className="summary-button" data-discover="true">
           채용 리포트 요약 보러가기
         </Link>
       </div>

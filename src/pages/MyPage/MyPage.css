@@ -669,14 +669,54 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 12px;
+  padding: 16px;
   min-width: 120px;
 }
 
 .post-date-right {
+  color: #666;
   font-size: 14px;
-  color: #999;
-  margin-bottom: 4px;
+}
+
+.like-remove-button,
+.bookmark-remove-button,
+.apply-remove-button {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  font-size: 14px;
+  transition: color 0.2s ease;
+  align-self: flex-end;
+}
+
+.like-remove-button:hover {
+  color: #ff4444;
+}
+
+.bookmark-remove-button:hover {
+  color: #ff4444;
+}
+
+.apply-remove-button:hover {
+  color: #ff4444;
+}
+
+.heart-icon,
+.bookmark-icon,
+.apply-icon {
+  font-size: 16px;
+}
+
+.like-remove-text,
+.bookmark-remove-text,
+.apply-remove-text {
+  font-weight: 500;
 }
 
 .post-date {
@@ -717,12 +757,20 @@
   font-weight: 500;
 }
 
-.post-stats {
+.mypage-post-stats {
   display: flex;
   gap: 15px;
+  font-size: 14px;
+  color: #666;
 }
 
-.like-count, .comment-count {
+.mypage-post-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like-count, .comment-count, .salary {
   display: flex;
   align-items: center;
   font-size: 14px;
