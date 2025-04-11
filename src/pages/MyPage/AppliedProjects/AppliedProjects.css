@@ -1,0 +1,323 @@
+.applied-projects-container {
+  padding: 20px;
+}
+
+.applied-projects-empty {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+.applied-projects-project-card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.applied-projects-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.applied-projects-project-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.applied-projects-cancel-button {
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.applied-projects-cancel-button:hover {
+  color: #fa5252;
+}
+
+.applied-projects-cancel-button svg {
+  font-size: 16px;
+}
+
+.applied-projects-project-subtitle {
+  color: #495057;
+  font-size: 14px;
+  margin: 4px 0 16px 0;
+}
+
+.applied-projects-project-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.applied-projects-info-item {
+  display: flex;
+  align-items: center;
+}
+
+.applied-projects-label {
+  min-width: 80px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.applied-projects-value {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.applied-projects-tech-stacks,
+.applied-projects-positions {
+  margin-bottom: 16px;
+}
+
+.applied-projects-section-title {
+  color: #868e96;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.applied-projects-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.applied-projects-tech-tag,
+.applied-projects-position-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.applied-projects-project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.applied-projects-date {
+  color: #868e96;
+  font-size: 14px;
+}
+
+.applied-projects-status {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 취소 확인 모달 스타일 */
+.cancel-confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cancel-confirm-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-confirm-modal h2 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #212529;
+  text-align: center;
+}
+
+.cancel-confirm-modal p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  color: #495057;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.cancel-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cancel-confirm-actions button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-no {
+  background-color: #f1f3f5;
+  border: none;
+  color: #495057;
+}
+
+.cancel-no:hover {
+  background-color: #e9ecef;
+}
+
+.cancel-yes {
+  background-color: #fa5252;
+  border: none;
+  color: white;
+}
+
+.cancel-yes:hover {
+  background-color: #ff6b6b;
+}
+
+.status-reviewing {
+  background-color: #fff3bf;
+  color: #f08c00;
+}
+
+.status-interview {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.status-accepted {
+  background-color: #d3f9d8;
+  color: #2f9e44;
+}
+
+.status-rejected {
+  background-color: #ffe3e3;
+  color: #e03131;
+}
+
+.status-meeting {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.applied-projects-documents {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.applied-projects-view-documents {
+  display: inline-block;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: #495057;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applied-projects-view-documents:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+.applied-projects-meeting-request {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.applied-projects-meeting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.applied-projects-meeting-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.applied-projects-meeting-value {
+  color: #212529;
+  font-size: 1.1rem;
+}
+
+.applied-projects-meeting-location {
+  color: #868e96;
+  font-size: 0.9rem;
+}
+
+.applied-projects-meeting-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.applied-projects-meeting-accept {
+  background-color: #15cb96;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.applied-projects-meeting-accept:hover {
+  background-color: #12b886;
+}
+
+.applied-projects-meeting-reject {
+  background-color: #fa5252;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.applied-projects-meeting-reject:hover {
+  background-color: #e03131;
+} 

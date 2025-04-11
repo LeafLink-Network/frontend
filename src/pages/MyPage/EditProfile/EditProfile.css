@@ -9,12 +9,9 @@
 }
 
 .edit-profile-form-container {
-  width: 100%;
-  max-width: 480px;
-  padding: 40px 20px;
+  padding: 20px;
   background-color: #fff;
-  border-radius: 0;
-  box-shadow: none;
+
 }
 
 .edit-profile-title {
@@ -26,9 +23,8 @@
 }
 
 .edit-profile-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* 프로필 이미지 섹션 */
@@ -45,7 +41,6 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 15px;
-  border: 1px solid #eaeaea;
 }
 
 .profile-image img {
@@ -55,74 +50,66 @@
 }
 
 .change-image-button {
-  background: none;
-  border: 1px solid #15CB96;
-  color: #15CB96;
-  padding: 8px 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
   border-radius: 4px;
-  cursor: pointer;
+  padding: 8px 16px;
   font-size: 14px;
-  transition: all 0.2s;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .change-image-button:hover {
-  background-color: #f9f9f9;
+  background-color: #e9ecef;
 }
 
 /* 폼 그룹 */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .form-group label {
-  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
   font-weight: 500;
-  color: #333;
-}
-
-.required {
-  color: #ff6b6b;
-  margin-left: 4px;
+  color: #212529;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 14px 16px;
-  border-radius: 4px;
-  border: 1px solid #e1e1e1;
-  background-color: #fff;
-  color: #333;
-  font-size: 16px;
   width: 100%;
-  transition: border-color 0.2s;
-}
-
-.form-group input::placeholder,
-.form-group select::placeholder,
-.form-group textarea::placeholder {
-  color: #999;
+  padding: 10px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #495057;
+  transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #15CB96;
+  border-color: #228be6;
+}
+
+.required {
+  color: #fa5252;
+  margin-left: 4px;
 }
 
 .error-message {
-  color: #ff6b6b;
-  font-size: 14px;
+  color: #fa5252;
+  font-size: 12px;
   margin-top: 4px;
 }
 
-.success-message {
-  color: #15CB96;
-  font-size: 14px;
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #868e96;
   margin-top: 4px;
 }
 
@@ -134,87 +121,80 @@
 .selected-skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .skill-tag {
   display: flex;
   align-items: center;
-  background: #f0f0f0;
-  padding: 6px 12px;
-  border-radius: 20px;
+  background-color: #e9ecef;
+  border-radius: 16px;
+  padding: 4px 12px;
   font-size: 14px;
-  color: #555;
+  color: #495057;
 }
 
 .skill-tag button {
   background: none;
   border: none;
-  color: #999;
-  margin-left: 8px;
+  color: #868e96;
+  margin-left: 4px;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-}
-
-.skill-tag button:hover {
-  color: #ff6b6b;
+  padding: 0 4px;
 }
 
 .add-skill-button {
   background: none;
-  border: 1px dashed #ccc;
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: #666;
+  border: 1px dashed #adb5bd;
+  border-radius: 16px;
+  padding: 4px 12px;
   font-size: 14px;
+  color: #12B886;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .add-skill-button:hover {
+  background-color: #e6f8f3;
   border-color: #15CB96;
-  color: #15CB96;
 }
 
 /* 폼 액션 */
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
   margin-top: 40px;
 }
 
-.cancel-button {
-  background: none;
-  border: 1px solid #ddd;
-  padding: 12px 24px;
+.cancel-button,
+.save-button {
+  padding: 10px 20px;
   border-radius: 4px;
-  color: #666;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+}
+
+.cancel-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
 }
 
 .cancel-button:hover {
-  background-color: #f5f5f5;
+  background-color: #e9ecef;
 }
 
 .save-button {
-  padding: 16px;
-  background-color: #15CB96;
-  color: #fff;
+  background-color: #12B886;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 16px;
+  color: white;
 }
 
 .save-button:hover {
-  background-color: #13b686;
+  background-color: #15CB96;
 }
 
 /* 스킬 모달 */
@@ -236,77 +216,68 @@
   border-radius: 8px;
   width: 90%;
   max-width: 600px;
-  max-height: 90vh;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .skill-modal-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eaeaea;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .skill-modal-header h3 {
   margin: 0;
   font-size: 18px;
-  color: #333;
+  color: #212529;
 }
 
 .skill-search {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eaeaea;
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .skill-search input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border: 1px solid #dee2e6;
   border-radius: 4px;
-  font-size: 15px;
-}
-
-.skill-search input:focus {
-  outline: none;
-  border-color: #15CB96;
+  font-size: 14px;
 }
 
 .skill-grid {
-  padding: 16px 20px;
+  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 12px;
   overflow-y: auto;
-  max-height: 50vh;
+  max-height: 300px;
 }
 
 .skill-item {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
   border-radius: 4px;
+  font-size: 14px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .skill-item:hover {
+  background-color: #e6f8f3;
   border-color: #15CB96;
-  color: #15CB96;
 }
 
 .skill-item.selected {
-  background-color: #15CB96;
+  background-color: #12B886;
+  border-color: #12B886;
   color: white;
-  border-color: #15CB96;
 }
 
 .skill-modal-footer {
-  padding: 16px 20px;
-  border-top: 1px solid #eaeaea;
+  padding: 20px;
+  border-top: 1px solid #dee2e6;
   display: flex;
   justify-content: flex-end;
   gap: 12px;
@@ -316,27 +287,27 @@
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .skill-modal-footer .cancel-button {
-  background: none;
-  border: 1px solid #ddd;
-  color: #666;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
 }
 
 .skill-modal-footer .cancel-button:hover {
-  background-color: #f5f5f5;
+  background-color: #e9ecef;
 }
 
 .skill-modal-footer .confirm-button {
   background-color: #15CB96;
   border: none;
   color: white;
-  font-weight: 500;
 }
 
 .skill-modal-footer .confirm-button:hover {
-  background-color: #13b686;
+  background-color: #12B886;
 } 

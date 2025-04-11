@@ -1,0 +1,138 @@
+.liked-projects-container {
+  padding: 20px;
+}
+
+.liked-projects-empty {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+.liked-projects-project-card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.liked-projects-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.liked-projects-project-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.liked-projects-unlike-button {
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.liked-projects-unlike-button:hover {
+  color: #fa5252;
+}
+
+.liked-projects-unlike-button svg {
+  font-size: 16px;
+}
+
+.liked-projects-project-subtitle {
+  color: #495057;
+  font-size: 14px;
+  margin: 4px 0 16px 0;
+}
+
+.liked-projects-project-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.liked-projects-info-item {
+  display: flex;
+  align-items: center;
+}
+
+.liked-projects-label {
+  min-width: 80px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-projects-value {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.liked-projects-tech-stacks,
+.liked-projects-positions {
+  margin-bottom: 16px;
+}
+
+.liked-projects-section-title {
+  color: #868e96;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.liked-projects-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.liked-projects-tech-tag,
+.liked-projects-position-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.liked-projects-project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.liked-projects-date {
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-projects-status {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+} 
