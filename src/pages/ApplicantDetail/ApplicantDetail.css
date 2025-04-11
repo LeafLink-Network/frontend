@@ -1,0 +1,253 @@
+.applicant-detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.applicant-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.applicant-detail-header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+}
+
+.applicant-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgb(230, 252, 245);
+  color: rgb(21, 203, 150);
+}
+
+.applicant-detail-section {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.applicant-detail-section h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #212529;
+  margin: 0 0 1.25rem 0;
+}
+
+.applicant-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.applicant-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.applicant-detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.applicant-detail-item label {
+  font-size: 0.875rem;
+  color: #868e96;
+}
+
+.applicant-detail-value {
+  font-size: 0.9375rem;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.applicant-detail-value a {
+  color: rgb(21, 203, 150);
+  text-decoration: none;
+}
+
+.applicant-detail-value a:hover {
+  text-decoration: underline;
+}
+
+.applicant-detail-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.applicant-action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.applicant-back-button,
+.applicant-meeting-button,
+.applicant-select-button,
+.applicant-reject-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applicant-back-button {
+  background-color: #f1f3f5;
+  color: #495057;
+  border: none;
+}
+
+.applicant-back-button:hover {
+  background-color: #e9ecef;
+}
+
+.applicant-meeting-button {
+  background-color: rgb(21, 203, 150);
+  color: white;
+  border: none;
+}
+
+.applicant-meeting-button:hover {
+  background-color: rgb(18, 181, 134);
+}
+
+.applicant-select-button {
+  background-color: rgb(21, 203, 150);
+  color: white;
+  border: none;
+}
+
+.applicant-select-button:hover {
+  background-color: rgb(18, 181, 134);
+}
+
+.applicant-reject-button {
+  background-color: #fff5f5;
+  color: #fa5252;
+  border: none;
+}
+
+.applicant-reject-button:hover {
+  background-color: #fa5252;
+  color: white;
+}
+
+.applicant-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.applicant-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-modal h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 1.5rem;
+}
+
+.applicant-modal-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.applicant-modal-form-group label {
+  display: block;
+  font-size: 0.875rem;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.applicant-modal-form-group input,
+.applicant-modal-form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  color: #495057;
+}
+
+.applicant-modal-form-group input:focus,
+.applicant-modal-form-group select:focus {
+  outline: none;
+  border-color: rgb(21, 203, 150);
+}
+
+.applicant-modal-form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  color: #495057;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.applicant-modal-form-group textarea:focus {
+  outline: none;
+  border-color: rgb(21, 203, 150);
+}
+
+.applicant-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.applicant-modal-cancel,
+.applicant-modal-submit {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applicant-modal-cancel {
+  background-color: #f1f3f5;
+  color: #495057;
+  border: none;
+}
+
+.applicant-modal-cancel:hover {
+  background-color: #e9ecef;
+}
+
+.applicant-modal-submit {
+  background-color: rgb(21, 203, 150);
+  color: white;
+  border: none;
+}
+
+.applicant-modal-submit:hover {
+  background-color: rgb(18, 181, 134);
+} 

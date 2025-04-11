@@ -1,878 +1,86 @@
-import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { FaHeart, FaBookmark, FaRegBookmark, FaComment, FaPencilAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { IoMdHeartDislike } from "react-icons/io";
 import { MdBookmarkRemove } from "react-icons/md";
 import { PiPencilSimpleSlashFill } from "react-icons/pi";
 import './MyPage.css';
+import LikedPosts from './LikedPosts/LikedPosts';
+import LikedJobs from './LikedJobs/LikedJobs';
+import SavedJobs from './SavedJobs/SavedJobs';
+import AppliedProjects from './AppliedProjects/AppliedProjects';
+import LikedProjects from './LikedProjects/LikedProjects';
+import SavedProjects from './SavedProjects/SavedProjects';
+import EditProfile from './EditProfile/EditProfile';
 
 const MyPage = () => {
   const [activeMenu, setActiveMenu] = useState('main');
-  
-  // 프로필 정보 상태
-  const [email, setEmail] = useState('hong@example.com');
-  const [name, setName] = useState('홍길동');
-  const [phoneNumber, setPhoneNumber] = useState('010-1234-5678');
-  const [job, setJob] = useState('백엔드 개발자');
-  const [bio, setBio] = useState('안녕하세요. 3년차 백엔드 개발자입니다.');
-  const [skills, setSkills] = useState(['Java', 'Spring']);
   const [profileImage, setProfileImage] = useState('/profile.png');
+  const location = useLocation();
   
-  // 검색어 상태
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  // 에러 메시지 상태
-  const [nameError, setNameError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-
-  // 스킬 모달
-  const [showSkillModal, setShowSkillModal] = useState(false);
-  // 지원 취소 모달
-  const [showCancelModal, setShowCancelModal] = useState(false);
-  const [targetProjectId, setTargetProjectId] = useState(null);
-  const modalRef = useRef(null);
-  const cancelModalRef = useRef(null);
-
-  // 스킬 목록
-  const availableSkills = [
-    'Python', 'JavaScript', 'React', 'Node.js', 'AWS', 'Docker',
-    'Java', 'Spring', 'TypeScript', 'Angular', 'Vue.js', 'MongoDB',
-    'MySQL', 'PostgreSQL', 'Go', 'Kubernetes', 'GraphQL', 'Firebase'
-  ];
-  
-  // 검색어에 따라 필터링된 스킬 목록
-  const filteredSkills = searchQuery
-    ? availableSkills.filter(skill => 
-        skill.toLowerCase().includes(searchQuery.toLowerCase()))
-    : availableSkills;
-  
-  // 채용공고 북마크 상태 관리
-  const [savedJobs, setSavedJobs] = useState([
-    { 
-      id: 1, 
-      title: '시니어 백엔드 개발자', 
-      company: '테크스타트업 A사', 
-      location: '서울 · 강남구',
-      date: '2024.01.18',
-      platform: 'wanted',
-      salary: '연봉 6000~8000',
-      saved: true 
-    },
-    { 
-      id: 2, 
-      title: '프론트엔드 개발자', 
-      company: 'IT기업 B사', 
-      location: '성남 · 분당구',
-      date: '2024.01.16',
-      platform: 'saramin',
-      salary: '연봉 5000~7000',
-      saved: true 
-    },
-  ]);
-  
-  // 좋아요 한 채용공고 상태 관리
-  const [likedJobs, setLikedJobs] = useState([
-    { 
-      id: 1, 
-      title: '프론트엔드 개발자', 
-      company: '네이버',
-      location: '서울 · 강남구',
-      date: '2024.01.15',
-      platform: 'wanted',
-      salary: '연봉 5000~7000',
-      liked: true
-    },
-    { 
-      id: 2, 
-      title: '백엔드 개발자', 
-      company: '카카오',
-      location: '성남 · 분당구',
-      date: '2024.01.12',
-      platform: 'saramin',
-      salary: '연봉 5500~7500',
-      liked: true
-    },
-    { 
-      id: 3, 
-      title: 'DevOps 엔지니어', 
-      company: '라인',
-      location: '서울 · 서초구',
-      date: '2024.01.10',
-      platform: 'jobkorea',
-      salary: '연봉 6000~8000',
-      liked: true
+  // URL 변경 감지하여 activeMenu 설정
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/mypage') {
+      setActiveMenu('main');
+    } else if (path === '/mypage/edit') {
+      setActiveMenu('edit-profile');
+    } else if (path === '/mypage/recruiting') {
+      setActiveMenu('recruiting-projects');
+    } else if (path === '/mypage/liked-posts') {
+      setActiveMenu('liked-posts');
+    } else if (path === '/mypage/liked-jobs') {
+      setActiveMenu('liked-jobs');
+    } else if (path === '/mypage/saved-jobs') {
+      setActiveMenu('saved-jobs');
+    } else if (path === '/mypage/applied-projects') {
+      setActiveMenu('applied-projects');
+    } else if (path === '/mypage/liked-projects') {
+      setActiveMenu('liked-projects');
+    } else if (path === '/mypage/saved-projects') {
+      setActiveMenu('saved-projects');
     }
-  ]);
-  
-  // 좋아요 한 게시글 상태 관리
-  const [likedPosts, setLikedPosts] = useState([
-    { 
-      id: 1, 
-      title: '백엔드 개발자가 함께할 SNS 서비스 프로젝트', 
-      content: '소셜 네트워크 서비스를 함께 만들어갈 백엔드 개발자를 찾고 있습니다.',
-      date: '2024.01.15',
-      likes: 23,
-      comments: 12,
-      liked: true
-    },
-    { 
-      id: 2, 
-      title: 'AI 기반 추천 시스템 프로젝트', 
-      content: '머신러닝 기반의 콘텐츠 추천 시스템을 개발하는 프로젝트입니다.',
-      date: '2024.01.14',
-      likes: 18,
-      comments: 8,
-      liked: true
-    },
-    { 
-      id: 3, 
-      title: '모바일 헬스케어 앱 개발', 
-      content: '개인 맞춤형 건강 관리 서비스를 제공하는 모바일 앱을 개발합니다.',
-      date: '2024.01.13',
-      likes: 15,
-      comments: 6,
-      liked: true
-    }
-  ]);
-  
-  // 프로젝트 좋아요 상태 관리
-  const [likedProjects, setLikedProjects] = useState([
-    { 
-      id: 1, 
-      title: 'AI 기반 음악 추천 서비스', 
-      members: '개발자 3명 모집 중', 
-      skills: ['React', 'Node.js'],
-      date: '2024.01.18',
-      liked: true 
-    },
-    { 
-      id: 2, 
-      title: '핀테크 결제 시스템', 
-      members: '개발자 2명 모집 중', 
-      skills: ['Spring', 'MySQL'],
-      date: '2024.01.15',
-      liked: true 
-    },
-  ]);
-  
-  // 저장한 사이드 프로젝트 상태 관리
-  const [savedProjects, setSavedProjects] = useState([
-    { 
-      id: 1, 
-      title: '유튜브 클론 프로젝트', 
-      members: '개발자 4명 모집 중', 
-      location: '서울 · 마포구',
-      date: '2024.01.19',
-      skills: ['React', 'Firebase', 'Redux'],
-      saved: true 
-    },
-    { 
-      id: 2, 
-      title: '블록체인 기반 NFT 마켓플레이스', 
-      members: '개발자 2명 모집 중', 
-      location: '서울 · 강남구',
-      date: '2024.01.16',
-      skills: ['Solidity', 'React', 'Web3.js'],
-      saved: true 
-    },
-    { 
-      id: 3, 
-      title: 'AR 쇼핑 앱 개발', 
-      members: '개발자 3명 모집 중', 
-      location: '성남 · 분당구',
-      date: '2024.01.12',
-      skills: ['Unity', 'ARKit', 'Swift'],
-      saved: true 
-    }
-  ]);
-  
-  // 지원한 사이드 프로젝트 상태 관리
-  const [appliedProjects, setAppliedProjects] = useState([
-    { 
-      id: 1, 
-      title: '인공지능 기반 이미지 생성 서비스', 
-      company: '테크스타트업 C',
-      location: '서울 · 마포구',
-      date: '2024.01.20',
-      position: '백엔드 개발자',
-      skills: ['Python', 'PyTorch', 'React'],
-      applied: true 
-    },
-    { 
-      id: 2, 
-      title: '클라우드 기반 협업 툴 개발', 
-      company: '소프트웨어 기업 D',
-      location: '서울 · 강남구',
-      date: '2024.01.17',
-      position: '프론트엔드 개발자',
-      skills: ['AWS', 'Node.js', 'MongoDB'],
-      applied: true 
-    },
-    { 
-      id: 3, 
-      title: '커머스 플랫폼 리뉴얼 프로젝트', 
-      company: '이커머스 기업 E',
-      location: '성남 · 판교',
-      date: '2024.01.10',
-      position: 'DevOps 엔지니어',
-      skills: ['Java', 'Spring', 'React'],
-      applied: true 
-    }
-  ]);
-  
-  // 파일 입력 참조
-  const fileInputRef = useRef(null);
+  }, [location]);
 
-  // 채용공고 북마크 토글
-  const toggleBookmark = (jobId) => {
-    setSavedJobs(savedJobs.map(job => 
-      job.id === jobId ? { ...job, saved: !job.saved } : job
-    ));
-  };
-  
-  // 프로젝트 좋아요 토글
-  const toggleLike = (projectId) => {
-    // 좋아요 한 프로젝트를 찾아서 현재 상태를 확인
-    const project = likedProjects.find(project => project.id === projectId);
-    
-    if (project && project.liked) {
-      // 좋아요 취소 - 프로젝트 제거
-      setLikedProjects(likedProjects.filter(project => project.id !== projectId));
-    } else {
-      // 좋아요 활성화 - 상태 토글
-      setLikedProjects(likedProjects.map(project => 
-        project.id === projectId ? { ...project, liked: true } : project
-      ));
-    }
-  };
-
-  // 게시글 좋아요 토글
-  const togglePostLike = (postId) => {
-    // 게시글을 찾아서 현재 좋아요 상태를 확인
-    const post = likedPosts.find(post => post.id === postId);
-    
-    if (post && post.liked) {
-      // 좋아요 취소 - 게시글 제거
-      setLikedPosts(likedPosts.filter(post => post.id !== postId));
-    } else {
-      // 좋아요 활성화 - 상태 토글
-      setLikedPosts(likedPosts.map(post => 
-        post.id === postId ? { ...post, liked: true } : post
-      ));
-    }
-  };
-
-  // 채용공고 좋아요 토글
-  const toggleJobLike = (jobId) => {
-    // 채용공고를 찾아서 현재 좋아요 상태를 확인
-    const job = likedJobs.find(job => job.id === jobId);
-    
-    if (job && job.liked) {
-      // 좋아요 취소 - 채용공고 제거
-      setLikedJobs(likedJobs.filter(job => job.id !== jobId));
-    } else {
-      // 좋아요 활성화 - 상태 토글
-      setLikedJobs(likedJobs.map(job => 
-        job.id === jobId ? { ...job, liked: true } : job
-      ));
-    }
-  };
-
-  // 프로젝트 지원 취소 토글
-  const toggleProjectApply = (projectId) => {
-    // 지원한 프로젝트를 찾아서 현재 상태를 확인
-    const project = appliedProjects.find(project => project.id === projectId);
-    
-    if (project && project.applied) {
-      // 확인 모달 표시
-      setTargetProjectId(projectId);
-      setShowCancelModal(true);
-    }
-  };
-
-  // 지원 취소 확인
-  const confirmCancelApply = () => {
-    if (targetProjectId) {
-      // 지원 취소 - 프로젝트 제거
-      setAppliedProjects(appliedProjects.filter(project => project.id !== targetProjectId));
-      setShowCancelModal(false);
-      setTargetProjectId(null);
-    }
-  };
-
-  // 지원 취소 모달 닫기
-  const closeCancelModal = () => {
-    setShowCancelModal(false);
-    setTargetProjectId(null);
-  };
-
-  // 모달 외부 클릭 시 닫기 이벤트 핸들러
-  const handleClickOutside = (e) => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setShowSkillModal(false);
-    }
-    if (cancelModalRef.current && !cancelModalRef.current.contains(e.target)) {
-      setShowCancelModal(false);
-      setTargetProjectId(null);
-    }
-  };
-
-  // 이름 유효성 검사
-  const validateName = (name) => {
-    if (!name) return { valid: false, message: '이름을 입력해주세요.' };
-    
-    if (name.length < 2) return { valid: false, message: '2자 이상 입력해주세요.' };
-    
-    // 한글 또는 영문만 허용
-    const koreanOrEnglish = /^[가-힣a-zA-Z]+$/;
-    if (!koreanOrEnglish.test(name))
-      return { valid: false, message: '한글 또는 영문만 입력해주세요.' };
-    
-    // 숫자나 특수문자 체크
-    const hasNumbersOrSpecials = /[\d\W_]/.test(name);
-    if (hasNumbersOrSpecials)
-      return { valid: false, message: '특수문자 및 숫자는 사용할 수 없습니다.' };
-    
-    return { valid: true, message: '' };
-  };
-
-  // 이메일 유효성 검사
-  const validateEmail = (email) => {
-    if (!email) return { valid: false, message: '이메일을 입력해주세요.' };
-    
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(email)) return { valid: false, message: '올바른 이메일 형식이 아닙니다. (예: example@email.com)' };
-    
-    return { valid: true, message: '' };
-  };
-
-  // 전화번호 유효성 검사
-  const validatePhoneNumber = (phone) => {
-    if (!phone) return { valid: false, message: '전화번호를 입력해주세요.' };
-    
-    const re = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-    if (!re.test(phone)) return { valid: false, message: '올바른 전화번호 형식이 아닙니다. (예: 010-1234-5678)' };
-    
-    return { valid: true, message: '' };
-  };
-
-  // 이름 입력 핸들러
-  const handleNameChange = (e) => {
-    const value = e.target.value;
-    setName(value);
-    if (value) {
-      const result = validateName(value);
-      setNameError(result.valid ? '' : result.message);
-    } else {
-      setNameError('');
-    }
-  };
-
-  // 이메일 입력 핸들러
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    if (value) {
-      const result = validateEmail(value);
-      setEmailError(result.valid ? '' : result.message);
-    } else {
-      setEmailError('');
-    }
-  };
-
-  // 전화번호 입력 핸들러
-  const handlePhoneChange = (e) => {
-    const value = e.target.value;
-    setPhoneNumber(value);
-    if (value) {
-      const result = validatePhoneNumber(value);
-      setPhoneError(result.valid ? '' : result.message);
-    } else {
-      setPhoneError('');
-    }
-  };
-
-  // 자기소개 입력 핸들러
-  const handleBioChange = (e) => {
-    const inputText = e.target.value;
-    // 300자 제한
-    if (inputText.length <= 300) {
-      setBio(inputText);
-    }
-  };
-
-  // 프로필 업데이트 폼 제출 처리
-  const handleProfileSubmit = (e) => {
-    e.preventDefault();
-    let isValid = true;
-
-    // 이름 검증
-    const nameResult = validateName(name);
-    setNameError(nameResult.message);
-    isValid = isValid && nameResult.valid;
-
-    // 이메일 검증
-    const emailResult = validateEmail(email);
-    setEmailError(emailResult.message);
-    isValid = isValid && emailResult.valid;
-
-    // 전화번호 검증
-    const phoneResult = validatePhoneNumber(phoneNumber);
-    setPhoneError(phoneResult.message);
-    isValid = isValid && phoneResult.valid;
-
-    if (isValid) {
-      // 프로필 업데이트 처리 (실제 API 연동 필요)
-      console.log('프로필 업데이트 데이터:', { email, name, phoneNumber, job, bio, skills });
-      alert('프로필이 성공적으로 업데이트되었습니다.');
-      setActiveMenu('saved-jobs'); // 저장 후 기본 페이지로 복귀
-    }
-  };
-
-  // 스킬 추가/제거
-  const toggleSkill = (skill) => {
-    if (skills.includes(skill)) {
-      setSkills(skills.filter(s => s !== skill));
-    } else {
-      setSkills([...skills, skill]);
-    }
-  };
-
-  // 스킬 태그 삭제
-  const removeSkill = (skill) => {
-    setSkills(skills.filter(s => s !== skill));
-  };
-
-  // 검색어 변경 핸들러
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  // 모달 토글
-  const toggleSkillModal = () => {
-    setShowSkillModal(!showSkillModal);
-    setSearchQuery(''); // 모달 열 때 검색어 초기화
-  };
-
-  React.useEffect(() => {
-    if (showSkillModal || showCancelModal) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showSkillModal, showCancelModal]);
-
-  // 이미지 변경 버튼 클릭 핸들러
-  const handleImageButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
-  // 이미지 파일 선택 핸들러
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // 내 정보 수정 폼 렌더링
-  const renderEditProfileForm = () => {
-    return (
-      <div className="edit-profile-form-container">
-        <form className="edit-profile-form" onSubmit={handleProfileSubmit}>
-          <div className="profile-image-section">
-            <div className="profile-image">
-              <img src={profileImage} alt="프로필" />
-            </div>
-            <button type="button" className="change-image-button" onClick={handleImageButtonClick}>
-              이미지 변경
-            </button>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleImageChange}
-              style={{ display: 'none' }}
-              accept="image/*"
-            />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="name">이름 <span className="required">*</span></label>
-            <input
-              type="text"
-              id="name"
-              placeholder="이름을 입력해주세요"
-              value={name}
-              onChange={handleNameChange}
-            />
-            {nameError && <p className="error-message">{nameError}</p>}
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="email">이메일 <span className="required">*</span></label>
-            <input
-              type="email"
-              id="email"
-              placeholder="example@email.com"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {emailError && <p className="error-message">{emailError}</p>}
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="phone">전화번호</label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="010-0000-0000"
-              value={phoneNumber}
-              onChange={handlePhoneChange}
-            />
-            {phoneError && <p className="error-message">{phoneError}</p>}
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="job">직무</label>
-            <select
-              id="job"
-              value={job}
-              onChange={(e) => setJob(e.target.value)}
-            >
-              <option value="">직무를 선택해주세요</option>
-              <option value="프론트엔드 개발자">프론트엔드 개발자</option>
-              <option value="백엔드 개발자">백엔드 개발자</option>
-              <option value="풀스택 개발자">풀스택 개발자</option>
-              <option value="모바일 개발자">모바일 개발자</option>
-              <option value="DevOps/인프라">DevOps/인프라</option>
-              <option value="데이터 사이언티스트">데이터 사이언티스트</option>
-              <option value="AI 엔지니어">AI 엔지니어</option>
-              <option value="디자이너">디자이너</option>
-              <option value="기획자/PM">기획자/PM</option>
-            </select>
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="bio">자기소개</label>
-            <textarea
-              id="bio"
-              rows="4"
-              placeholder="자기소개를 입력해주세요"
-              value={bio}
-              onChange={handleBioChange}
-              maxLength={300}
-            ></textarea>
-            <div className="char-count">
-              <span>{bio.length}/300</span>
-            </div>
-          </div>
-          
-          <div className="form-group">
-            <label>기술 스택</label>
-            <div className="skills-container">
-              <div className="selected-skills">
-                {skills.map(skill => (
-                  <div key={skill} className="skill-tag">
-                    {skill}
-                    <button type="button" onClick={() => removeSkill(skill)}>×</button>
-                  </div>
-                ))}
-                <button 
-                  type="button" 
-                  className="add-skill-button"
-                  onClick={toggleSkillModal}
-                >
-                  + 기술 추가
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <div className="form-actions">
-            <button type="button" className="cancel-button" onClick={() => setActiveMenu('saved-jobs')}>취소</button>
-            <button type="submit" className="save-button">저장하기</button>
-          </div>
-        </form>
-      </div>
-    );
-  };
-
-  // 좋아요 한 게시글 렌더링
+  // 좋아요한 게시글 렌더링
   const renderLikedPosts = () => {
-    return (
-      <section className="liked-posts">
-        <div className="post-list">
-          {likedPosts.map(post => (
-            <div className="post-card" key={post.id}>
-              <div className="post-content">
-                <span className="post-date">{post.date}</span>
-                <h3 className="post-title">{post.title}</h3>
-                <p className="post-preview">{post.content}</p>
-                <div className="post-meta">
-                  <div className="mypage-post-stats">
-                    <span className="like-count"><FaHeart className="like-icon" /> {post.likes}</span>
-                    <span className="comment-count"><FaComment className="comment-icon" /> {post.comments}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{post.date}</span>
-                <button 
-                  className="like-remove-button"
-                  onClick={() => togglePostLike(post.id)}
-                >
-                  <IoMdHeartDislike className="heart-icon" />
-                  <span className="like-remove-text">좋아요 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <LikedPosts />;
   };
 
-  // 좋아요 한 채용공고 렌더링
+  // 좋아요한 채용공고 렌더링
   const renderLikedJobs = () => {
-    return (
-      <section className="liked-jobs">
-        <div className="post-list">
-          {likedJobs.map(job => (
-            <div className="post-card" key={job.id}>
-              <div className="post-content">
-                <span className="post-date">{job.date}</span>
-                <h3 className="post-title">{job.title}</h3>
-                <div className="company-info">
-                  <p className="company-name">{job.company}</p>
-                  <span className={`platform-badge ${job.platform}`}>
-                    {getPlatformLabel(job.platform)}
-                  </span>
-                </div>
-                <div className="post-meta">
-                  <div className="mypage-post-stats">
-                    <span>{job.location}</span>
-                    <span className="salary">{job.salary}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{job.date}</span>
-                <button 
-                  className="like-remove-button"
-                  onClick={() => toggleJobLike(job.id)}
-                >
-                  <IoMdHeartDislike className="heart-icon" />
-                  <span className="like-remove-text">좋아요 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <LikedJobs />;
   };
 
-  // 저장된 채용공고 페이지 렌더링
+  // 저장된 채용공고 렌더링
   const renderSavedJobs = () => {
-    return (
-      <section className="saved-jobs">
-        <div className="post-list">
-          {savedJobs.map(job => (
-            <div className="post-card" key={job.id}>
-              <div className="post-content">
-                <span className="post-date">{job.date}</span>
-                <h3 className="post-title">{job.title}</h3>
-                <div className="company-info">
-                  <p className="company-name">{job.company}</p>
-                  <span className={`platform-badge ${job.platform}`}>
-                    {getPlatformLabel(job.platform)}
-                  </span>
-                </div>
-                <div className="post-meta">
-                  <div className="mypage-post-stats">
-                    <span>{job.location}</span>
-                    <span className="salary">{job.salary}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{job.date}</span>
-                <button 
-                  className="bookmark-remove-button"
-                  onClick={() => toggleBookmark(job.id)}
-                >
-                  <MdBookmarkRemove className="bookmark-icon" />
-                  <span className="bookmark-remove-text">저장 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <SavedJobs />;
   };
 
-  // 지원한 사이드 프로젝트 렌더링
+  // 지원한 프로젝트 렌더링
   const renderAppliedProjects = () => {
-    return (
-      <section className="applied-projects">
-        <div className="post-list">
-          {appliedProjects.map(project => (
-            <div className="post-card" key={project.id}>
-              <div className="post-content">
-                <span className="post-date">{project.date}</span>
-                <h3 className="post-title">{project.title}</h3>
-                <div className="company-info">
-                  <p className="company-name">{project.company}</p>
-                  <p className="location">{project.location}</p>
-                </div>
-                <div className="position-info">
-                  <p className="position">지원 포지션: {project.position}</p>
-                </div>
-                <div className="post-meta">
-                  <div className="skills">
-                    {project.skills.map((skill, index) => (
-                      <span className="skill-tag" key={index}>{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{project.date}</span>
-                <button 
-                  className="apply-remove-button"
-                  onClick={() => toggleProjectApply(project.id)}
-                >
-                  <PiPencilSimpleSlashFill className="apply-icon" />
-                  <span className="apply-remove-text">지원 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <AppliedProjects />;
   };
 
-  // 좋아요 한 사이드 프로젝트 페이지 렌더링
+  // 좋아요한 프로젝트 렌더링
   const renderLikedProjects = () => {
-    return (
-      <section className="liked-projects">
-        <div className="post-list">
-          {likedProjects.map(project => (
-            <div className="post-card" key={project.id}>
-              <div className="post-content">
-                <span className="post-date">{project.date}</span>
-                <h3 className="post-title">{project.title}</h3>
-                <div className="company-info">
-                  <p className="company-name">{project.members}</p>
-                </div>
-                <div className="post-meta">
-                  <div className="skills">
-                    {project.skills.map((skill, index) => (
-                      <span className="skill-tag" key={index}>{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{project.date}</span>
-                <button 
-                  className="like-remove-button"
-                  onClick={() => toggleLike(project.id)}
-                >
-                  <IoMdHeartDislike className="heart-icon" />
-                  <span className="like-remove-text">좋아요 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <LikedProjects />;
   };
 
-  // 저장한 사이드 프로젝트 페이지 렌더링
+  // 저장한 프로젝트 렌더링
   const renderSavedProjects = () => {
-    return (
-      <section className="saved-projects">
-        <div className="post-list">
-          {savedProjects.map(project => (
-            <div className="post-card" key={project.id}>
-              <div className="post-content">
-                <span className="post-date">{project.date}</span>
-                <h3 className="post-title">{project.title}</h3>
-                <div className="company-info">
-                  <p className="company-name">{project.members}</p>
-                  <p className="location">{project.location}</p>
-                </div>
-                <div className="post-meta">
-                  <div className="skills">
-                    {project.skills.map((skill, index) => (
-                      <span className="skill-tag" key={index}>{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="post-right">
-                <span className="post-date-right">{project.date}</span>
-                <button 
-                  className="bookmark-remove-button"
-                  onClick={() => toggleProjectBookmark(project.id)}
-                >
-                  <MdBookmarkRemove className="bookmark-icon" />
-                  <span className="bookmark-remove-text">저장 취소</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
+    return <SavedProjects />;
   };
 
-  // 플랫폼 라벨 가져오기
-  const getPlatformLabel = (platform) => {
-    switch (platform) {
-      case 'wanted':
-        return '원티드';
-      case 'saramin':
-        return '사람인';
-      case 'jobkorea':
-        return '잡코리아';
-      default:
-        return '';
-    }
-  };
-
-  // 프로젝트 저장 토글
-  const toggleProjectBookmark = (projectId) => {
-    // 저장한 프로젝트를 찾아서 현재 상태를 확인
-    const project = savedProjects.find(project => project.id === projectId);
-    
-    if (project && project.saved) {
-      // 저장 취소 - 프로젝트 제거
-      setSavedProjects(savedProjects.filter(project => project.id !== projectId));
-    } else {
-      // 저장 활성화 - 상태 토글
-      setSavedProjects(savedProjects.map(project => 
-        project.id === projectId ? { ...project, saved: true } : project
-      ));
-    }
+  // 모집 중인 프로젝트 렌더링
+  const renderRecruitingProjects = () => {
+    return <SavedProjects filter="recruiting" />;
   };
 
   // 메인 영역 컨텐츠 결정
   const renderMainContent = () => {
     if (activeMenu === 'edit-profile') {
-      return renderEditProfileForm();
+      return <EditProfile />;
     } else if (activeMenu === 'liked-posts') {
       return renderLikedPosts();
     } else if (activeMenu === 'liked-jobs') {
@@ -885,6 +93,8 @@ const MyPage = () => {
       return renderLikedProjects();
     } else if (activeMenu === 'saved-projects') {
       return renderSavedProjects();
+    } else if (activeMenu === 'recruiting-projects') {
+      return renderRecruitingProjects();
     }
 
     return (
@@ -1095,7 +305,8 @@ const MyPage = () => {
          activeMenu === 'saved-jobs' ? '저장된 채용공고' :
          activeMenu === 'applied-projects' ? '지원한 사이드 프로젝트' :
          activeMenu === 'liked-projects' ? '좋아요 한 사이드 프로젝트' :
-         activeMenu === 'saved-projects' ? '저장한 사이드 프로젝트' : '마이페이지'}
+         activeMenu === 'saved-projects' ? '저장한 사이드 프로젝트' :
+         activeMenu === 'recruiting-projects' ? '모집 중인 사이드 프로젝트' : '마이페이지'}
       </h1>
       
       <div className="mypage-content">
@@ -1118,57 +329,64 @@ const MyPage = () => {
           
           <nav className="mypage-menu">
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'main' ? 'active' : ''}`}
+              to="/mypage"
               onClick={() => setActiveMenu('main')}
             >
               마이페이지
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'edit-profile' ? 'active' : ''}`}
+              to="/mypage/edit"
               onClick={() => setActiveMenu('edit-profile')}
             >
               내 정보 수정
             </Link>
             <Link 
-              to="#" 
+              className={`menu-item ${activeMenu === 'recruiting-projects' ? 'active' : ''}`} 
+              to="/mypage/recruiting"
+              onClick={() => setActiveMenu('recruiting-projects')}
+            >
+              내 사이드 프로젝트
+            </Link>
+            <Link 
               className={`menu-item ${activeMenu === 'liked-posts' ? 'active' : ''}`}
+              to="/mypage/liked-posts"
               onClick={() => setActiveMenu('liked-posts')}
             >
               좋아요 한 게시글
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'liked-jobs' ? 'active' : ''}`}
+              to="/mypage/liked-jobs"
               onClick={() => setActiveMenu('liked-jobs')}
             >
               좋아요 한 채용공고
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'saved-jobs' ? 'active' : ''}`}
+              to="/mypage/saved-jobs"
               onClick={() => setActiveMenu('saved-jobs')}
             >
               저장된 채용공고
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'applied-projects' ? 'active' : ''}`}
+              to="/mypage/applied-projects"
               onClick={() => setActiveMenu('applied-projects')}
             >
               지원한 사이드 프로젝트
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'liked-projects' ? 'active' : ''}`}
+              to="/mypage/liked-projects"
               onClick={() => setActiveMenu('liked-projects')}
             >
               좋아요 한 사이드 프로젝트
             </Link>
             <Link 
-              to="#" 
               className={`menu-item ${activeMenu === 'saved-projects' ? 'active' : ''}`}
+              to="/mypage/saved-projects"
               onClick={() => setActiveMenu('saved-projects')}
             >
               저장한 사이드 프로젝트
@@ -1181,83 +399,6 @@ const MyPage = () => {
           {renderMainContent()}
         </div>
       </div>
-
-      {/* 스킬 선택 모달 */}
-      {showSkillModal && (
-        <div className="skill-modal-overlay">
-          <div className="skill-modal" ref={modalRef}>
-            <div className="skill-modal-header">
-              <h3>기술 선택</h3>
-            </div>
-            <div className="skill-search">
-              <input 
-                type="text" 
-                placeholder="Python, JavaScript, React 등 기술을 입력하세요" 
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-            </div>
-            <div className="skill-grid">
-              {filteredSkills.map(skill => (
-                <div 
-                  key={skill}
-                  className={`skill-item ${skills.includes(skill) ? 'selected' : ''}`}
-                  onClick={() => toggleSkill(skill)}
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
-            <div className="skill-modal-footer">
-              <button 
-                type="button" 
-                className="cancel-button"
-                onClick={() => setShowSkillModal(false)}
-              >
-                취소
-              </button>
-              <button 
-                type="button" 
-                className="confirm-button"
-                onClick={() => setShowSkillModal(false)}
-              >
-                확인
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 지원 취소 확인 모달 */}
-      {showCancelModal && (
-        <div className="cancel-modal-overlay">
-          <div className="cancel-modal" ref={cancelModalRef}>
-            <div className="cancel-modal-header">
-              <h3>지원 취소 확인</h3>
-            </div>
-            <div className="cancel-modal-content">
-              <p>정말 지원을 취소하시겠습니까?</p>
-              <p className="cancel-warning">지원 취소 후에는 되돌릴 수 없습니다.</p>
-            </div>
-            <div className="cancel-modal-footer">
-              <button 
-                type="button" 
-                className="cancel-button"
-                onClick={closeCancelModal}
-              >
-                아니오
-              </button>
-              <button 
-                type="button" 
-                className="confirm-button"
-                onClick={confirmCancelApply}
-              >
-                예, 취소합니다
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

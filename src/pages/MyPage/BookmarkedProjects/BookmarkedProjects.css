@@ -1,0 +1,85 @@
+.bookmarked-projects-container {
+  padding: 20px;
+}
+
+.bookmarked-projects-empty {
+  composes: empty-state from '../MyPage.css';
+}
+
+.project-card {
+  composes: card from '../MyPage.css';
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.project-title-section {
+  flex: 1;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.project-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #495057;
+}
+
+.remove-bookmark-button {
+  composes: action-button bookmark from '../MyPage.css';
+}
+
+.project-info {
+  composes: info-grid from '../MyPage.css';
+}
+
+.info-item {
+  composes: info-item from '../MyPage.css';
+}
+
+.label {
+  composes: info-label from '../MyPage.css';
+}
+
+.value {
+  composes: info-value from '../MyPage.css';
+}
+
+.tech-stacks, .positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tech-tag {
+  composes: tag tech from '../MyPage.css';
+}
+
+.position-tag {
+  composes: tag position from '../MyPage.css';
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.date {
+  color: #868e96;
+}
+
+.status {
+  composes: tag status from '../MyPage.css';
+} 

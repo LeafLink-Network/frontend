@@ -1,0 +1,132 @@
+.liked-jobs-container {
+  padding: 20px;
+}
+
+.liked-jobs-empty {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+.liked-jobs-job-card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.liked-jobs-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.liked-jobs-job-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.liked-jobs-unlike-button {
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.liked-jobs-unlike-button:hover {
+  color: #fa5252;
+}
+
+.liked-jobs-unlike-button svg {
+  font-size: 16px;
+}
+
+.liked-jobs-company-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #495057;
+  font-size: 14px;
+}
+
+.liked-jobs-company-name {
+  font-weight: 500;
+}
+
+.liked-jobs-location {
+  color: #868e96;
+}
+
+.liked-jobs-job-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.liked-jobs-info-item {
+  display: flex;
+  align-items: center;
+}
+
+.liked-jobs-label {
+  min-width: 80px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-jobs-value {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.liked-jobs-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.liked-jobs-requirement-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.liked-jobs-job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.liked-jobs-date {
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-jobs-d-day {
+  color: #fa5252;
+  font-weight: 500;
+  font-size: 14px;
+} 

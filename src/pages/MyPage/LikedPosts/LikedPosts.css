@@ -1,0 +1,128 @@
+.liked-posts-container {
+  padding: 20px;
+}
+
+.liked-posts-empty {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+.liked-posts-post-card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.liked-posts-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.liked-posts-post-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.liked-posts-unlike-button {
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.liked-posts-unlike-button:hover {
+  color: #fa5252;
+}
+
+.liked-posts-unlike-button svg {
+  font-size: 16px;
+}
+
+.liked-posts-post-content {
+  color: #495057;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.liked-posts-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.liked-posts-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.liked-posts-post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.liked-posts-post-info {
+  display: flex;
+  gap: 12px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-posts-author {
+  font-weight: 500;
+  color: #495057;
+}
+
+.liked-posts-date {
+  color: #868e96;
+}
+
+.liked-posts-post-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.liked-posts-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.liked-posts-icon {
+  font-size: 16px;
+}
+
+.liked-posts-icon.heart {
+  color: #fa5252;
+}
+
+.liked-posts-icon.comment {
+  color: #868e96;
+} 

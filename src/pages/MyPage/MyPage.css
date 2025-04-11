@@ -1,43 +1,42 @@
+/* 공통 레이아웃 */
 .mypage-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
 .mypage-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #333;
-  border-bottom: 1px solid #eaeaea;
-  padding-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 32px;
 }
 
 .mypage-content {
   display: flex;
   gap: 40px;
-  min-width: 855.6px;
 }
 
-/* 왼쪽 사이드바 */
+/* 사이드바 스타일 */
 .mypage-sidebar {
-  flex: 0 0 280px;
-  border-right: 1px solid #eaeaea;
-  padding-right: 20px;
+  width: 280px;
+  flex-shrink: 0;
 }
 
 .profile-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 25px;
+  text-align: center;
+  padding: 24px;
 }
 
 .profile-image {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 15px;
+  margin-bottom: 16px;
 }
 
 .profile-image img {
@@ -46,91 +45,182 @@
   object-fit: cover;
 }
 
+.profile-info {
+  text-align: center;
+}
+
 .profile-name {
-  font-size: 18px;
+  margin: 0;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.profile-job {
-  font-size: 14px;
-  color: #666;
-}
-
-.selected-job {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.selected-job h3 {
-  font-size: 16px;
-  color: #666;
+  color: #212529;
   margin-bottom: 8px;
 }
 
-.selected-job p {
-  font-size: 15px;
+.profile-job {
+  margin: 0;
+  font-size: 16px;
+  color: #495057;
   font-weight: 500;
-  color: #333;
 }
 
+.selected-job {
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.selected-job h3 {
+  font-size: 14px;
+  color: #868e96;
+  margin: 0 0 8px 0;
+}
+
+.selected-job p {
+  font-size: 16px;
+  color: #212529;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* 메뉴 스타일 */
 .mypage-menu {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 8px;
 }
 
 .menu-item {
   display: block;
-  padding: 10px 0;
-  color: #555;
+  padding: 12px 16px;
+  color: #495057;
   text-decoration: none;
-  font-size: 15px;
-  transition: color 0.2s;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.menu-item:first-child {
-  border-bottom: 1px solid #eaeaea;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.menu-item:hover, .menu-item.active {
-  color: #15CB96;
-  font-weight: 500;
+.menu-item:hover {
+  background-color: #f1f3f5;
 }
 
 .menu-item.active {
-  position: relative;
+  background-color: #e6f8f3;
+  color: #12B886;
+  font-weight: 500;
 }
 
-.menu-item.active::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 16px;
-  background-color: #15CB96;
-  border-radius: 2px;
-}
-
-/* 오른쪽 컨텐츠 영역 */
+/* 메인 컨텐츠 영역 */
 .mypage-main {
   flex: 1;
-  min-width: 560px;
+  min-width: 0;
 }
 
-.section-title {
+/* 공통 카드 스타일 */
+.card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 공통 버튼 스타일 */
+.action-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #333;
+}
+
+.action-button.like {
+  color: #fa5252;
+}
+
+.action-button.bookmark {
+  color: #228be6;
+}
+
+.action-button.cancel {
+  color: #868e96;
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+  background-color: #f8f9fa;
+}
+
+/* 공통 태그 스타일 */
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.tag.tech {
+  background-color: #e6f8f3;
+  color: #12B886;
+}
+
+.tag.position {
+  background-color: #fff4e6;
+  color: #fd7e14;
+}
+
+.tag.status {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+/* 공통 정보 스타일 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  width: 80px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.info-value {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 공통 빈 상태 스타일 */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  color: #868e96;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* 최근 활동 */
@@ -257,12 +347,34 @@
 }
 
 .skill-tag {
-  display: inline-block;
-  padding: 4px 10px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
   color: #555;
+  height: 32px;
+  gap: 6px;
+}
+
+.skill-tag button {
+  background: none;
+  border: none;
+  color: #999;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-tag button:hover {
+  color: #ff6b6b;
 }
 
 .like-button {
@@ -430,26 +542,34 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .skill-tag {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: #f0f0f0;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
   color: #555;
+  height: 32px;
+  gap: 6px;
 }
 
 .skill-tag button {
   background: none;
   border: none;
   color: #999;
-  margin-left: 8px;
+  padding: 0;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill-tag button:hover {
@@ -465,6 +585,9 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .add-skill-button:hover {
@@ -476,38 +599,43 @@
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
-  margin-top: 40px;
+  gap: 12px;
+  margin-top: 32px;
 }
 
-.cancel-button {
-  background: none;
-  border: 1px solid #ddd;
-  padding: 12px 24px;
-  border-radius: 4px;
-  color: #666;
+.form-actions .cancel-button,
+.form-actions .save-button {
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 8px;
   font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cancel-button:hover {
+.form-actions .cancel-button {
   background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #666;
+  min-width: 100px;
 }
 
-.save-button {
-  padding: 16px;
+.form-actions .cancel-button:hover {
+  background-color: #eeeeee;
+}
+
+.form-actions .save-button {
   background-color: #15CB96;
-  color: #fff;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  color: white;
+  min-width: 100px;
 }
 
-.save-button:hover {
+.form-actions .save-button:hover {
   background-color: #13b686;
 }
 
@@ -816,113 +944,76 @@
 }
 
 /* 지원 취소 확인 모달 */
-.cancel-modal-overlay {
+.cancel-confirm-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.cancel-modal {
-  background-color: white;
+.cancel-confirm-modal {
+  background: white;
   border-radius: 12px;
+  padding: 24px;
   width: 90%;
   max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  animation: modalFadeIn 0.3s ease-out;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cancel-modal-header {
-  padding: 20px;
-  border-bottom: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cancel-modal-header h3 {
-  margin: 0;
+.cancel-confirm-modal h2 {
+  margin: 0 0 16px 0;
   font-size: 18px;
-  color: #333;
-  font-weight: 600;
-}
-
-.cancel-modal-content {
-  padding: 24px 20px;
+  color: #212529;
   text-align: center;
 }
 
-.cancel-modal-content p {
-  margin: 0 0 8px;
-  font-size: 16px;
-  color: #333;
+.cancel-confirm-modal p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  color: #495057;
+  text-align: center;
   line-height: 1.5;
 }
 
-.cancel-warning {
-  color: #ff6b6b;
-  font-size: 14px;
-  margin-top: 12px;
-}
-
-.cancel-modal-footer {
-  padding: 16px 20px;
-  border-top: 1px solid #eaeaea;
+.cancel-confirm-actions {
   display: flex;
   justify-content: center;
   gap: 12px;
 }
 
-.cancel-modal-footer .cancel-button {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  padding: 12px 24px;
+.cancel-confirm-actions button {
+  padding: 10px 20px;
   border-radius: 6px;
-  color: #666;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.cancel-modal-footer .cancel-button:hover {
-  background-color: #eaeaea;
-}
-
-.cancel-modal-footer .confirm-button {
-  padding: 12px 24px;
-  background-color: #ff6b6b;
-  color: #fff;
+.cancel-no {
+  background-color: #e9ecef;
   border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  color: #495057;
 }
 
-.cancel-modal-footer .confirm-button:hover {
-  background-color: #ff5252;
+.cancel-no:hover {
+  background-color: #dee2e6;
+}
+
+.cancel-yes {
+  background-color: #fa5252;
+  border: none;
+  color: white;
+}
+
+.cancel-yes:hover {
+  background-color: #ff6b6b;
 }
 
 /* 직무 기반 리포트 섹션 */
@@ -1330,4 +1421,4 @@
 .view-more-button:hover {
   background-color: #f5f5f5;
   border-color: #ccc;
-} 
+}

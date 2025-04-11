@@ -1,0 +1,132 @@
+.saved-jobs-container {
+  padding: 20px;
+}
+
+.saved-jobs-empty {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+.saved-jobs-job-card {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.saved-jobs-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.saved-jobs-job-title {
+  margin: 0;
+  font-size: 18px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.saved-jobs-unsave-button {
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.saved-jobs-unsave-button:hover {
+  color: #fa5252;
+}
+
+.saved-jobs-unsave-button svg {
+  font-size: 16px;
+}
+
+.saved-jobs-company-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #495057;
+  font-size: 14px;
+}
+
+.saved-jobs-company-name {
+  font-weight: 500;
+}
+
+.saved-jobs-location {
+  color: #868e96;
+}
+
+.saved-jobs-job-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.saved-jobs-info-item {
+  display: flex;
+  align-items: center;
+}
+
+.saved-jobs-label {
+  min-width: 80px;
+  color: #868e96;
+  font-size: 14px;
+}
+
+.saved-jobs-value {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.saved-jobs-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.saved-jobs-requirement-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e6fcf5;
+  color: rgb(21, 203, 150);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.saved-jobs-job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.saved-jobs-date {
+  color: #868e96;
+  font-size: 14px;
+}
+
+.saved-jobs-d-day {
+  color: #fa5252;
+  font-weight: 500;
+  font-size: 14px;
+} 
