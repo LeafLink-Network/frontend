@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart, FaBookmark, FaRegBookmark, FaComment, FaPencilAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { IoMdHeartDislike } from "react-icons/io";
+import { MdBookmarkRemove } from "react-icons/md";
+import { PiPencilSimpleSlashFill } from "react-icons/pi";
 import './MyPage.css';
 
 const MyPage = () => {
@@ -614,7 +617,7 @@ const MyPage = () => {
                 <h3 className="post-title">{post.title}</h3>
                 <p className="post-preview">{post.content}</p>
                 <div className="post-meta">
-                  <div className="post-stats">
+                  <div className="mypage-post-stats">
                     <span className="like-count"><FaHeart className="like-icon" /> {post.likes}</span>
                     <span className="comment-count"><FaComment className="comment-icon" /> {post.comments}</span>
                   </div>
@@ -623,11 +626,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{post.date}</span>
                 <button 
-                  className="like-button"
+                  className="like-remove-button"
                   onClick={() => togglePostLike(post.id)}
                 >
-                  <FaHeart className="heart-icon" />
-                  <span className="like-text">좋아요 취소</span>
+                  <IoMdHeartDislike className="heart-icon" />
+                  <span className="like-remove-text">좋아요 취소</span>
                 </button>
               </div>
             </div>
@@ -654,7 +657,7 @@ const MyPage = () => {
                   </span>
                 </div>
                 <div className="post-meta">
-                  <div className="job-info">
+                  <div className="mypage-post-stats">
                     <span>{job.location}</span>
                     <span className="salary">{job.salary}</span>
                   </div>
@@ -663,11 +666,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{job.date}</span>
                 <button 
-                  className="like-button"
+                  className="like-remove-button"
                   onClick={() => toggleJobLike(job.id)}
                 >
-                  <FaHeart className="heart-icon" />
-                  <span className="like-text">좋아요 취소</span>
+                  <IoMdHeartDislike className="heart-icon" />
+                  <span className="like-remove-text">좋아요 취소</span>
                 </button>
               </div>
             </div>
@@ -694,7 +697,7 @@ const MyPage = () => {
                   </span>
                 </div>
                 <div className="post-meta">
-                  <div className="job-info">
+                  <div className="mypage-post-stats">
                     <span>{job.location}</span>
                     <span className="salary">{job.salary}</span>
                   </div>
@@ -703,11 +706,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{job.date}</span>
                 <button 
-                  className="like-button" 
+                  className="bookmark-remove-button"
                   onClick={() => toggleBookmark(job.id)}
                 >
-                  {job.saved ? <FaBookmark className="heart-icon" /> : <FaRegBookmark className="heart-icon" />}
-                  <span className="like-text">저장 취소</span>
+                  <MdBookmarkRemove className="bookmark-icon" />
+                  <span className="bookmark-remove-text">저장 취소</span>
                 </button>
               </div>
             </div>
@@ -745,11 +748,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{project.date}</span>
                 <button 
-                  className="like-button"
+                  className="apply-remove-button"
                   onClick={() => toggleProjectApply(project.id)}
                 >
-                  <FaPencilAlt className="heart-icon" />
-                  <span className="like-text">지원 취소</span>
+                  <PiPencilSimpleSlashFill className="apply-icon" />
+                  <span className="apply-remove-text">지원 취소</span>
                 </button>
               </div>
             </div>
@@ -783,11 +786,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{project.date}</span>
                 <button 
-                  className="like-button"
+                  className="like-remove-button"
                   onClick={() => toggleLike(project.id)}
                 >
-                  <FaHeart className="heart-icon" />
-                  <span className="like-text">좋아요 취소</span>
+                  <IoMdHeartDislike className="heart-icon" />
+                  <span className="like-remove-text">좋아요 취소</span>
                 </button>
               </div>
             </div>
@@ -822,11 +825,11 @@ const MyPage = () => {
               <div className="post-right">
                 <span className="post-date-right">{project.date}</span>
                 <button 
-                  className="like-button"
+                  className="bookmark-remove-button"
                   onClick={() => toggleProjectBookmark(project.id)}
                 >
-                  <FaBookmark className="heart-icon" />
-                  <span className="like-text">저장 취소</span>
+                  <MdBookmarkRemove className="bookmark-icon" />
+                  <span className="bookmark-remove-text">저장 취소</span>
                 </button>
               </div>
             </div>
